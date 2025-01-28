@@ -377,6 +377,15 @@
             "related": ".xml"
           }
         }
+      },
+      "PROG2070Assignment2/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/PROG2070Assignment2.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PROG2070Assignment2.dll": {}
+        }
       }
     }
   },
@@ -970,6 +979,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "PROG2070Assignment2/1.0.0": {
+      "type": "project",
+      "path": "../PROG2070Assignment2/PROG2070Assignment2.csproj",
+      "msbuildProject": "../PROG2070Assignment2/PROG2070Assignment2.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -978,6 +992,7 @@
       "NUnit >= 3.14.0",
       "NUnit.Analyzers >= 3.9.0",
       "NUnit3TestAdapter >= 4.5.0",
+      "PROG2070Assignment2 >= 1.0.0",
       "coverlet.collector >= 6.0.0"
     ]
   },
@@ -1013,7 +1028,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\PROG2070Assignment2\\PROG2070Assignment2.csproj": {
+              "projectPath": "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\PROG2070Assignment2\\PROG2070Assignment2.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

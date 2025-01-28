@@ -4,6 +4,22 @@
     "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\UnitTests\\UnitTests.csproj": {}
   },
   "projects": {
+    "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\PROG2070Assignment2\\PROG2070Assignment2.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\PROG2070Assignment2\\PROG2070Assignment2.csproj",
+        "projectName": "PROG2070Assignment2",
+        "projectPath": "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\PROG2070Assignment2\\PROG2070Assignment2.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\UnitTests\\UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -32,7 +48,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\PROG2070Assignment2\\PROG2070Assignment2.csproj": {
+                "projectPath": "C:\\Users\\Merrick\\Desktop\\School\\PROG2070\\Assignment2\\PROG2070Assignment2\\PROG2070Assignment2.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
