@@ -1,4 +1,33 @@
+# Ignore Visual Studio specific files
 .vs/
-obj/
-PROG2070Assignment2/.vs/
-PROG2070Assignment2/obj/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Ignore build and output folders
+/bin/
+/obj/
+
+# Ignore NuGet packages
+*.nupkg
+/packages/
+
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore user-specific files
+*.userosscache
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore environment variable files
+.env
+
+# Ignore Windows thumbnail cache
+Thumbs.db
+
+# Ignore macOS specific files
+.DS_Store
