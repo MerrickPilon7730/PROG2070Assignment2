@@ -1,2 +1,4 @@
 .vs/
 obj/
+PROG2070Assignment2/.vs/
+PROG2070Assignment2/obj/
