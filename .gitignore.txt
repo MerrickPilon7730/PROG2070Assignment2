@@ -1,17 +1,17 @@
 # Ignore Visual Studio specific files
-.vs/
-.vscode/
-.idea/
-*.user
-*.suo
+../vs/
+../vscode/
+../idea/
+*../user
+*../suo
 
 # Ignore build and output folders
-/bin/
-/obj/
+../bin/
+../obj/
 
 # Ignore NuGet packages
 *.nupkg
-/packages/
+../packages/
 
 # Ignore temporary files
 *.log
