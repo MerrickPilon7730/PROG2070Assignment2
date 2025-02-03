@@ -1,0 +1,14 @@
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\bin\Debug\net8.0\PROG2070Assignment2.exe
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\bin\Debug\net8.0\PROG2070Assignment2.deps.json
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\bin\Debug\net8.0\PROG2070Assignment2.runtimeconfig.json
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\bin\Debug\net8.0\PROG2070Assignment2.dll
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\bin\Debug\net8.0\PROG2070Assignment2.pdb
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\PROG2070Assignment2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\PROG2070Assignment2.AssemblyInfoInputs.cache
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\PROG2070Assignment2.AssemblyInfo.cs
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\PROG2070Assignment2.csproj.CoreCompileInputs.cache
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\PROG2070Assignment2.dll
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\refint\PROG2070Assignment2.dll
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\PROG2070Assignment2.pdb
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\PROG2070Assignment2.genruntimeconfig.cache
+C:\Users\Merrick\Desktop\School\PROG2070\Assignment 2\PROG2070Assignment2\obj\Debug\net8.0\ref\PROG2070Assignment2.dll

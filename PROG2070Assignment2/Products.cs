@@ -8,17 +8,17 @@ namespace PROG2070Assignment2
 {
 	public class Products
 	{
-		public int prodID {  get; set; }
+		public int prodID { get; set; }
 		public string prodName { get; set; }
-		public double itemPrice {  get; set; }
-		public int stockAmount {  get; set; }
+		public double itemPrice { get; set; }
+		public int stockAmount { get; set; }
 
-		public Products(int productID, string productName, double price, int amount) 
+		public Products(int productID, string productName, double price, int amount)
 		{
 			if (productID < 5 || productID > 50000)
 			{
 				throw new ArgumentOutOfRangeException(nameof(productID), "Product ID must be between 5 and 50000.");
-			}	
+			}
 
 			if (price < 5 || price > 5000)
 			{
@@ -41,13 +41,13 @@ namespace PROG2070Assignment2
 			if (amount <= 0)
 			{
 				throw new ArgumentOutOfRangeException(nameof(amount), "Increase amount must be greater than 0.");
-			}	
+			}
 
 			if (stockAmount + amount > 500000)
 			{
 				throw new InvalidOperationException("Stock cannot exceed the maximum limit of 500000.");
 			}
-				
+
 			stockAmount += amount;
 		}
 
@@ -67,3 +67,4 @@ namespace PROG2070Assignment2
 		}
 	}
 }
+
