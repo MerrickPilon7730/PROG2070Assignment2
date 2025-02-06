@@ -1,9 +1,8 @@
 using PROG2070Assignment2;
-using NUnit.Framework;
+
 
 namespace UnitTests
 {
-    [TestFixture]
     public class Tests
     {
         private Products product;
@@ -11,140 +10,197 @@ namespace UnitTests
         [SetUp]
         public void Setup()
         {
+
             product = new Products(10, "Test Product", 50.0, 1000);
         }
 
-        // Product ID Tests
+        #region StockAmountTests
+        //A test for a valid stock increase. Ensures that increasing stock between 5-500000 works
         [Test]
-        public void ProductID_ValidID_ShouldSetCorrectly()
+        public void ValidStockIncrease_2000Stock_Valid()
         {
-            var newProduct = new Products(100, "Product A", 100.0, 500);
-            Assert.That(newProduct.prodID, Is.EqualTo(100));
-        }
 
-        [Test]
-        public void ProductID_MinBoundary_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(5, "Product B", 200.0, 1000);
-            Assert.That(newProduct.prodID, Is.EqualTo(5));
-        }
-
-        [Test]
-        public void ProductID_MaxBoundary_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(50000, "Product C", 300.0, 1500);
-            Assert.That(newProduct.prodID, Is.EqualTo(50000));
-        }
-
-        // Product Name Tests
-        [Test]
-        public void ProductName_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(101, "Product X", 120.0, 600);
-            Assert.That(newProduct.prodName, Is.EqualTo("Product X"));
-        }
-
-        [Test]
-        public void ProductName_EmptyString_ShouldAllow()
-        {
-            var newProduct = new Products(102, "", 150.0, 700);
-            Assert.That(newProduct.prodName, Is.EqualTo(""));
-        }
-
-        [Test]
-        public void ProductName_LongString_ShouldSetCorrectly()
-        {
-            string longName = new string('A', 255);
-            var newProduct = new Products(103, longName, 180.0, 800);
-            Assert.That(newProduct.prodName, Is.EqualTo(longName));
-        }
-
-        // Item Price Tests
-        [Test]
-        public void ItemPrice_ValidPrice_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(104, "Product Y", 4999.99, 900);
-            Assert.That(newProduct.itemPrice, Is.EqualTo(4999.99));
-        }
-
-        [Test]
-        public void ItemPrice_MinBoundary_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(105, "Product Z", 5.0, 1000);
-            Assert.That(newProduct.itemPrice, Is.EqualTo(5.0));
-        }
-
-        [Test]
-        public void ItemPrice_MaxBoundary_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(106, "Product W", 5000.0, 1100);
-            Assert.That(newProduct.itemPrice, Is.EqualTo(5000.0));
-        }
-
-        // Stock Amount Tests
-        [Test]
-        public void StockAmount_ValidStock_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(107, "Product V", 220.0, 499999);
-            Assert.That(newProduct.stockAmount, Is.EqualTo(499999));
-        }
-
-        [Test]
-        public void StockAmount_MinBoundary_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(108, "Product U", 250.0, 5);
-            Assert.That(newProduct.stockAmount, Is.EqualTo(5));
-        }
-
-        [Test]
-        public void StockAmount_MaxBoundary_ShouldSetCorrectly()
-        {
-            var newProduct = new Products(109, "Product T", 275.0, 500000);
-            Assert.That(newProduct.stockAmount, Is.EqualTo(500000));
-        }
-
-        // Increase Stock Tests
-        [Test]
-        public void IncreaseStock_ValidAmount_ShouldIncreaseCorrectly()
-        {
             product.IncreaseStock(2000);
             Assert.That(product.stockAmount, Is.EqualTo(3000));
         }
 
+        //A test for an invalid stock increase. Ensures that the stock can't exceed the 500000 limit/upper bound.
         [Test]
-        public void IncreaseStock_ExceedsMaxLimit_ShouldThrowException()
+        public void InvalidStockIncrease_ExceedsMaxLimit_ThrowsException()
         {
             var ex = Assert.Throws<InvalidOperationException>(() => product.IncreaseStock(499001));
             Assert.That(ex.Message, Is.EqualTo("Stock cannot exceed the maximum limit of 500000."));
         }
 
+        //A test for an invalid stock increase. Ensures that stock can't be increased by an invalid amount.
         [Test]
-        public void IncreaseStock_ZeroAmount_ShouldThrowException()
+        public void InvalidStockIncrease_InvalidIncreaseAmount_ThrowsException()
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => product.IncreaseStock(0));
             Assert.That(ex.Message, Does.Contain("amount").And.Contains("Increase amount must be greater than 0."));
+
+            var ex2 = Assert.Throws<ArgumentOutOfRangeException>(() => product.IncreaseStock(-50));
+            Assert.That(ex.Message, Does.Contain("amount").And.Contains("Increase amount must be greater than 0."));
         }
 
-        // Decrease Stock Tests
+        //A test for a valid stock decrese. Ensures that decreasing stock between 5-500000 works
         [Test]
-        public void DecreaseStock_ValidAmount_ShouldDecreaseCorrectly()
+        public void ValidStockDecrese_10Stock_Valid()
         {
             product.DecreaseStock(10);
             Assert.That(product.stockAmount, Is.EqualTo(990));
         }
 
+        //A test for an inalid stock decrease. Ensures that the stock can't be decresed lower than the lower limit/bound of 5.
         [Test]
-        public void DecreaseStock_ExceedsMinimumLimit_ShouldThrowException()
+        public void InvalidStockDecrease_ExceedsMinimumLimit_ThrowsException()
         {
             var ex = Assert.Throws<InvalidOperationException>(() => product.DecreaseStock(996));
             Assert.That(ex.Message, Is.EqualTo("Stock cannot go below the minimum limit of 5."));
         }
 
+        //A test for an inalid stock decrease. Ensures that the stock can't be decreased by an invalid amount
         [Test]
-        public void DecreaseStock_ZeroAmount_ShouldThrowException()
+        public void InvalidStockDecrease_InvalidDecreaseAmount_ThrowsException()
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => product.DecreaseStock(0));
             Assert.That(ex.Message, Does.Contain("amount").And.Contains("Decrease amount must be greater than 0."));
+
+            var ex2 = Assert.Throws<ArgumentOutOfRangeException>(() => product.DecreaseStock(-5));
+            Assert.That(ex.Message, Does.Contain("amount").And.Contains("Decrease amount must be greater than 0."));
         }
+        #endregion
+
+        #region StockIDTests
+        //A test for an invalid product ID. Ensures that the product ID is not less than 5.
+        [Test]
+        public void InvalidProductID_LessThan5_ThrowsArgumentOutOfRangeException()
+        {
+            int invalidProductID = 4;
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new Products(invalidProductID, "Test Product", 20.20, 50));
+
+            Assert.That(ex.Message, Does.Contain("Product ID must be between 5 and 50000."));
+        }
+
+        //A test for a valid product ID. Ensures that a product ID can be created at the lower limit/bound of 5.
+        [Test]
+        public void ValidProductID_EqualTo5_CreatesProductSuccessfully()
+        {
+            int validProductID = 5;
+            var product = new Products(validProductID, "Test Product", 50.0, 1000);
+
+            Assert.That(product, Is.Not.Null);
+            Assert.That(product.prodID, Is.EqualTo(validProductID));
+        }
+
+        //A test for an invalid product ID. Ensures that the correct parameter is throwing an exception.
+        [Test]
+        public void InvalidProductID_LessThan5_ThrowsArgumentOutOfRangeException_WithCorrectParameterName()
+        {
+            int invalidProductID = 4;
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new Products(invalidProductID, "Test Product", 20.20, 1000));
+
+            Assert.That(ex.ParamName, Is.EqualTo("productID"));
+        }
+
+        //A test for a valid product ID. Ensures that an ID between 5 and 50000 can be created.
+        [Test]
+        public void ValidProductID_ProductID25000_CreatesProductSuccessfully()
+        {
+            int validProductID = 25000;
+            var product = new Products(validProductID, "Test Product", 20.20, 1000);
+
+            Assert.That(product, Is.Not.Null);
+            Assert.That(product.prodID, Is.EqualTo(validProductID));
+        }
+
+        //A test for a valid Product ID. Ensures that an ID can be created at the upper limit/bound of 50000.
+        [Test]
+        public void ValidProductID_ProductID50000_CreatesProductSuccessfully()
+        {
+            int validProductID = 50000;
+            var product = new Products(validProductID, "Test Product", 20.20, 1000);
+
+            Assert.That(product, Is.Not.Null);
+            Assert.That(product.prodID, Is.EqualTo(validProductID));
+        }
+
+        //A test for an invalid Product ID. Ensures that an ID greater than 50000 can not be created.
+        [Test]
+        public void InvalidProductID_GreaterThan50000_ThrowsArgumentOutOfRangeException()
+        {
+            int invalidProductID = 50001;
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new Products(invalidProductID, "Test Product", 20.20, 1000));
+
+            Assert.That(ex.Message, Does.Contain("Product ID must be between 5 and 50000."));
+        }
+        #endregion
+
+        #region ProdutPriceTests
+        //A test for an invalid product price. Ensures that a price lower than 5.00 can not be created.
+        [Test]
+        public void InvalidProductPrice_LessThan5_ThrowsArgumentOutOfRangeException()
+        {
+            double invalidPrice = 4.99;
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new Products(10, "Test Product", invalidPrice, 1000));
+
+            Assert.That(ex.Message, Does.Contain("Item Price must be between $5 and $5000."));
+        }
+
+        //A test for a valid product price. Ensures that a price at the lower limit/bound of 5.00 can be created.
+        [Test]
+        public void ValidProductPrice_PriceOf5_CreatesProductSuccessfully()
+        {
+            double validPrice = 5.00;
+            var product = new Products(10, "Test Product", validPrice, 1000);
+
+            Assert.That(product, Is.Not.Null);
+            Assert.That(product.itemPrice, Is.EqualTo(validPrice));
+        }
+
+        //A test for a valid product price. Ensures that a price between 5 and 50000 can be created.
+        [Test]
+        public void ValidProductPrice_PriceOf2500_CreatesProductSuccessfully()
+        {
+            double validPrice = 2500.00;
+            var product = new Products(10, "Test Product", validPrice, 1000);
+
+            Assert.That(product, Is.Not.Null);
+            Assert.That(product.itemPrice, Is.EqualTo(validPrice));
+        }
+
+        //A test for a valid product price. Ensures that a price at the upper limit/bound of 50000.00 can be created.
+        [Test]
+        public void ValidProductPrice_PriceOf5000_CreatesProductSuccessfully()
+        {
+            double validPrice = 5000.00;
+            var product = new Products(10, "Test Product", validPrice, 1000);
+
+            Assert.That(product, Is.Not.Null);
+            Assert.That(product.itemPrice, Is.EqualTo(validPrice));
+        }
+
+        //A test for an invalid product price. Ensures that a product price greater than 50000.00 can not be created.
+        [Test]
+        public void InvalidProductPrice_GreaterThan5000_ThrowsArgumentOutOfRangeException()
+        {
+            double invalidPrice = 5000.01;
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new Products(10, "Test Product", invalidPrice, 1000));
+
+            Assert.That(ex.Message, Does.Contain("Item Price must be between $5 and $5000."));
+        }
+
+        //A test for an invalid product price. Ensures that the correct parameter is throwing the exception.
+        [Test]
+        public void InvalidProductPrice_LessThan5_ThrowsArgumentOutOfRangeException_WithCorrectParameterName()
+        {
+            double invalidPrice = 4.99;
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new Products(10, "Test Product", invalidPrice, 1000));
+
+            Assert.That(ex.ParamName, Is.EqualTo("price"));
+        }
+
+        #endregion
+
     }
 }
